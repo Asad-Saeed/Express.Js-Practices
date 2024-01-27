@@ -1,0 +1,46 @@
+{{! Forms }}
+<h1 class="my-4 text-center">Form</h1>
+<form action="/api/members" class="my-4" method="POST">
+  <div class="form-group">
+    <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"/>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input
+    name="email"
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="status" class="form-label">Status:</label>
+    <input
+    name="status"
+      type="status"
+      class="form-control"
+      id="status"
+      aria-describedby="statusHelp"
+    />
+  </div>
+  </div>
+  <div class="mt-3">
+    <input
+      type="submit"
+      class="form-control mt-5 bg-info"
+      value="Add Member"
+    />
+  </div>
+
+</form>
+<a href="/api/members" class="btn btn-primary">Visit Api's</a>
+<h1 class="text-center mb-3">{{title}}</h1>
+<ul class="list-group">{{#each members}}
+    <li class="list-group-item">Name:{{this.name}}<br />Email:{{this.email}}<br
+      />Status:{{this.status}}</li>
+  {{/each}}
+</ul>
+

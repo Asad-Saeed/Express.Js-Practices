@@ -28,13 +28,14 @@ router.post("/", (req, res) => {
     email: req.body.email,
     status: req.body.status,
   };
-  if (!newMember.name && !newMember.email) {
+  if (!newMember.name && !newMember.email  && !newMember.status) {
     return res
       .status(400)
-      .json({ message: "Name and Email are required fields" });
+      .json({ message: "Name, Email and Status are required fields" });
   }
   members.push(newMember);
-  res.status(201).json(members);
+  // res.status(201).json(members);
+  res.redirect("/")
 });
 
 // Update a member
