@@ -1,6 +1,8 @@
-const path = require("path")
+const path = require("path");
 const express = require("express");
 const app = express();
+const members = require("./data");
+
 const port = 5000;
 // app modules get,post,put,patch,delete,all,use,listen
 app.get("/", (req, res) => {
@@ -11,7 +13,12 @@ app.get("/about", (req, res) => {
 });
 app.get("/table", (req, res) => {
   // res.status(200).sendFile(path.join(__dirname,"public","index1.html"));
-  res.status(200).sendFile(path.resolve(__dirname,"public","index2.html"));
+  res.status(200).sendFile(path.resolve(__dirname, "public", "index2.html"));
+});
+// // Rest Api
+
+app.get("/api/members", (req, res) => {
+  res.status(200).json(members);
 });
 // // Dont use above method t show file use express use to set static folder
 // Set Static folder
