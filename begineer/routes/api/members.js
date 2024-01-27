@@ -46,10 +46,28 @@ router.put("/:id", (req, res) => {
       if (member.id === parseInt(req.params.id)) {
         member.name = updateMember.name ? updateMember.name : member.name;
         member.email = updateMember.email ? updateMember.email : member.email;
-        member.status = updateMember.status ? updateMember.status : member.status;
-        res.status(200).json({message:"Member Updated",member})
+        member.status = updateMember.status
+          ? updateMember.status
+          : member.status;
+        res.status(200).json({ message: "Member Updated", member });
       }
     });
+  } else {
+    res.status(404).json({ message: `Id:${req.params.id} is not found!` });
+  }
+});
+
+// Delete a member
+router.delete("/:id", (req, res) => {
+  const found = members.some((member) => member.id === parseInt(req.params.id));
+  if (found) {
+    res
+      .json({
+        message: `Id:${req.params.id} is delete from records`,
+        members: members.filter(
+          (member) => member.id !== parseInt(req.params.id)
+        ),
+      });
   } else {
     res.status(404).json({ message: `Id:${req.params.id} is not found!` });
   }
